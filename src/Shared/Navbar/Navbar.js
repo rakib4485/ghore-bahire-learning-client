@@ -36,6 +36,7 @@ const Navbar = () => {
                 </>)
               }
             </div> */}
+            <Link to='/login' className="bg-gradient-to-r from-sky-500 to-indigo-500 text-white text-lg font-semibold px-5 py-3 rounded-md">Log in</Link>
           </ul>
 
         </div>
@@ -56,6 +57,7 @@ const Navbar = () => {
             <Link to='/login' className="bg-gradient-to-r from-sky-500 to-indigo-500 text-white text-lg font-semibold px-5 py-3 rounded-md">Log in</Link>
           </>)
         } */}
+        <Link to='/login' className="bg-gradient-to-r from-sky-500 to-indigo-500 text-white text-lg font-semibold px-5 py-3 rounded-md">Log in</Link>
       </div>
       <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
         <svg
