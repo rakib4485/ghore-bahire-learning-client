@@ -1,87 +1,87 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const SignUp = () => {
-//     const {createUser, updateUser, googleSignIn} = useContext(AuthContext);
-//   const [createdUserEmail, setCreatedUserEmail ] = useState('');
-//   const [token] = useToken(createdUserEmail);
-//   const location = useLocation();
-//   const navigate = useNavigate();
+  const { createUser, updateUser, googleSignIn } = useContext(AuthContext);
+  const [createdUserEmail, setCreatedUserEmail] = useState('');
+  // const [token] = useToken(createdUserEmail);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-//   const form = location.state?.form?.pathname || "/";
+  const form = location.state?.form?.pathname || "/";
 
-//   if(token){
-//     navigate(form, {replace: true })
-//   }
+  //   if(token){
+  //     navigate(form, {replace: true })
+  //   }
 
-const handleSignup = event =>{
-  event.preventDefault();
+  const handleSignup = event => {
+    event.preventDefault();
 
-//   const form = event.target;
-//   const name = form.name.value;
-//   const email = form.email.value;
-//   const password = form.password.value;
-//   const role =  'user';
+      const form = event.target;
+      const name = form.name.value;
+      const email = form.email.value;
+      const password = form.password.value;
+      const role =  'user';
 
-//   const userInfo = {
-//     displayName: name
-//   }
+      const userInfo = {
+        displayName: name
+      }
 
-//   createUser(email, password)
-//   .then(result =>{
-//     const user = result.user;
-//     console.log(user);
-//     updateUser(userInfo)
-//     .then( () =>{
-//       saveUser(name, email,role);
-//     })
-//     .then(err => console.error(err));
-//   })
-//   .catch(err => console.error(err));
-//   form.reset();
+      createUser(email, password)
+      .then(result =>{
+        const user = result.user;
+        console.log(user);
+        updateUser(userInfo)
+        .then( () =>{
+          saveUser(name, email,role);
+          navigate(form, {replace: true })
+        })
+        .then(err => console.error(err));
+      })
+      .catch(err => console.error(err));
+      form.reset();
+  }
+
+  const handleGoogleSignIn = () =>{
+    googleSignIn()
+    .then(result => {
+      const user = result.user;
+      saveUser(user.displayName, user.email, user.photoURL);
+    })
+    .then(error => console.error(error))
 }
 
-const handleGoogleSignIn = () => {
-//   googleSignIn()
-//   .then(result => {
-//     const user = result.user;
-//     console.log(user);
-//     const role='user';
-//     saveUser(user.displayName, user.email, role);
-//   })
-//   .catch(error => console.error(error))
-}
+  const saveUser = (name, email, role) => {
+    //   const user = {name, email, role};
+    //   fetch('http://localhost:5000/users', {
+    //       method: 'POST',
+    //       headers: {
+    //         'content-type': 'application/json'
+    //       },
+    //       body: JSON.stringify(user)
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //       setCreatedUserEmail(email);
+    //       // getUserToken(email)
+    //     })
+  }
 
-const saveUser = (name, email, role) => {
-//   const user = {name, email, role};
-//   fetch('http://localhost:5000/users', {
-//       method: 'POST',
-//       headers: {
-//         'content-type': 'application/json'
-//       },
-//       body: JSON.stringify(user)
-//     })
-//     .then(res => res.json())
-//     .then(data => {
-//       setCreatedUserEmail(email);
-//       // getUserToken(email)
-//     })
-}
+  // const getUserToken = email =>{
+  //   fetch(`http://localhost:5000/jwt?email=${email}`)
+  //   .then(res => res.json())
+  //   .then(data =>{
+  //     if(data.accessToken){
+  //       localStorage.setItem('accessToken', data.accessToken)
+  //       navigate('/')
+  //     }
+  //   })
+  // }
 
-// const getUserToken = email =>{
-//   fetch(`http://localhost:5000/jwt?email=${email}`)
-//   .then(res => res.json())
-//   .then(data =>{
-//     if(data.accessToken){
-//       localStorage.setItem('accessToken', data.accessToken)
-//       navigate('/')
-//     }
-//   })
-// }
-
-    return (
-        <div className='min-h-screen' style={{backgroundImage: "url(https://i.ibb.co/PMY2k56/login.jpg)", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat"}}>
-            <div className=" py-20">
+  return (
+    <div className='min-h-screen' style={{ backgroundImage: "url(https://i.ibb.co/PMY2k56/login.jpg)", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
+      <div className=" py-20">
         <form onSubmit={handleSignup} className="card-body bg-white md:w-[40%] mx-auto rounded-md">
           <div className="flex justify-between items-center">
             <div className="text-center md:w-1/2">
@@ -154,8 +154,8 @@ const saveUser = (name, email, role) => {
           </div> */}
         </form>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default SignUp;

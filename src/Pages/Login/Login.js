@@ -1,15 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
+import { FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
-    // const {signIn, googleSignIn} = useContext(AuthContext);
-    // const [loginUserEmail, setLoginUserEmail] = useState('');
+    const {signIn, googleSignIn} = useContext(AuthContext);
+    const [loginUserEmail, setLoginUserEmail] = useState('');
     // const [token] = useToken(loginUserEmail);
-    // const navigate = useNavigate();
-    // const location = useLocation();
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    // const from = location.state?.from?.pathname || "/";
-    // console.log(from);
+    const from = location.state?.from?.pathname || "/";
+    console.log(from);
 
     // if(token){
     //   navigate(from, {replace: true});
@@ -18,29 +20,30 @@ const Login = () => {
     const handleLogin = event =>{
         event.preventDefault();
 
-        // const form = event.target;
-        // const email = form.email.value;
-        // const password = form.password.value;
-        // signIn(email, password)
-        // .then(result =>{
-        //   const user = result.user;
-        //   console.log(user);
-        //   setLoginUserEmail(email);
-        // })
-        // .then(err => {
-        //   console.error(err);
-        // })
-        // form.reset();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signIn(email, password)
+        .then(result =>{
+          const user = result.user;
+          console.log(user);
+          // setLoginUserEmail(email);
+          navigate(form, {replace: true })
+        })
+        .then(err => {
+          console.error(err);
+        })
+        form.reset();
     }
 
     const handleGoogleSignIn = () =>{
-        // googleSignIn()
-        // .then(result => {
-        //   const user = result.user;
-        //   saveUser(user.displayName, user.email);
-        // })
-        // .then(error => console.error(error))
-    }
+      googleSignIn()
+      .then(result => {
+        const user = result.user;
+        saveUser(user.displayName, user.email, user.photoURL);
+      })
+      .then(error => console.error(error))
+  }
 
     const saveUser = (name, email) => {
         // const user = {name, email};
@@ -110,9 +113,9 @@ const Login = () => {
           </div>
           <div className="divider">OR</div>
           <div className="form-control mt-6 ">
-            {/* <button onClick={handleGoogleSignIn} className="flex items-center justify-center btn btn-secondary btn-outline">
+            <button onClick={handleGoogleSignIn} className="flex items-center justify-center btn btn-secondary btn-outline">
               <FaGoogle className="mr-2"></FaGoogle> Login With Google
-            </button> */}
+            </button>
           </div>
         </form>
       </div>
