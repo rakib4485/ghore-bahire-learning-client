@@ -22,6 +22,7 @@ const SignUp = () => {
       const name = form.name.value;
       const email = form.email.value;
       const password = form.password.value;
+      const id = form.id.value;
       const role =  'user';
 
       const userInfo = {
@@ -34,8 +35,8 @@ const SignUp = () => {
         console.log(user);
         updateUser(userInfo)
         .then( () =>{
-          saveUser(name, email,role);
-          navigate(form, {replace: true })
+          saveUser(name, email, role, id);
+          
         })
         .then(err => console.error(err));
       })
@@ -52,20 +53,20 @@ const SignUp = () => {
     .then(error => console.error(error))
 }
 
-  const saveUser = (name, email, role) => {
-    //   const user = {name, email, role};
-    //   fetch('http://localhost:5000/users', {
-    //       method: 'POST',
-    //       headers: {
-    //         'content-type': 'application/json'
-    //       },
-    //       body: JSON.stringify(user)
-    //     })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       setCreatedUserEmail(email);
-    //       // getUserToken(email)
-    //     })
+  const saveUser = (name, email, role,id) => {
+      const user = {name, email, role, id};
+      fetch('http://localhost:5000/users', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          navigate(form, {replace: true })
+        })
   }
 
   // const getUserToken = email =>{
@@ -111,12 +112,12 @@ const SignUp = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Image</span>
+              <span className="label-text">Student Id</span>
             </label>
             <input
-              type="file"
-              name="name"
-              placeholder="Name"
+              type="text"
+              name="id"
+              placeholder="(ex): 201-15-3369"
               className="input input-bordered"
             />
           </div>
