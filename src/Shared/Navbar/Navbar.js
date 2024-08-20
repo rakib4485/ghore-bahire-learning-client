@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/BLC logo.png'
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTeacher from '../../hooks/useTeacher';
 
 const Navbar = () => {
   const {user, logOut} = useContext(AuthContext)
+  const [isTeacher] = useTeacher(user?.email);
 
   const handleLogOut = () => {
     logOut()
@@ -14,21 +16,24 @@ const Navbar = () => {
 
     const menuItems = <React.Fragment>
     <li><Link to="/">Home</Link></li>
-    <li><Link to="/properties">Properties</Link></li>
+    {/* <li><Link to="/properties">Properties</Link></li> */}
     <li><Link to="/about">About</Link></li>
     {/* <li><Link to="/blog">Blog</Link></li> */}
-    <li><Link to="/contact">Contacts</Link></li>
+    {/* <li><Link to="/contact">Contacts</Link></li> */}
     {
       user?.uid ? (<>
-        <li><Link to="/wishlist">Wishlist</Link></li>
-        <li><Link to="/dashboard">Dashboard</Link></li>
+        <li><Link to="/my">Dashboard</Link></li>
+      {
+        isTeacher && 
+        <li><Link to="/my-teacher">My Courses</Link></li>
+      }
       </>) : (<>
 
       </>)
     }
   </React.Fragment>
     return (
-        <div className="navbar justify-between">
+        <div className="navbar justify-between bg-[#62A8EA] text-white">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

@@ -1,5 +1,6 @@
 import React from 'react';
 import bg from '../../assets/course-bg.jpg'
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
     const courses = [
@@ -43,6 +44,7 @@ const Dashboard = () => {
                 <div className='grid grid-cols-4 gap-6 mt-10 cursor-pointer'>
                     {
                         courses.map(course => (
+                            <Link to={`/course-details`}>
                             <div className='h-44 relative group overflow-hidden' style={{
                                 background: `url(${bg})`, backgroundPosition: 'center',
                                 backgroundRepeat: 'no-repeat'
@@ -57,6 +59,7 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                             </div>
+                            </Link>
                         ))
                     }
                 </div>
