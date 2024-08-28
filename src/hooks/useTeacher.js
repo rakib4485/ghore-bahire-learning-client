@@ -5,7 +5,7 @@ const useTeacher = (email) => {
     const [isTeacher, setIsTeacher] = useState(false);
     const [isTeacherLoading, setIsTeacherLoading] = useState(true);
     useEffect( () =>{
-        fetch(`http://localhost:5000/users/teacher/${email}`)
+        fetch(`https://ghore-baire-learning-server.vercel.app/users/teacher/${email}`)
         .then(res => res.json())
         .then(data => {
             setIsTeacher(data.isTeacher);

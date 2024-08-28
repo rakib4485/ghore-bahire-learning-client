@@ -1,15 +1,16 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import { FaGoogle } from 'react-icons/fa';
 
 const SignUp = () => {
   const { createUser, updateUser, googleSignIn } = useContext(AuthContext);
-  const [createdUserEmail, setCreatedUserEmail] = useState('');
+  // const [createdUserEmail, setCreatedUserEmail] = useState('');
   // const [token] = useToken(createdUserEmail);
   const location = useLocation();
   const navigate = useNavigate();
 
-  const form = location.state?.form?.pathname || "/";
+  const from = location.state?.form?.pathname || "/";
 
   //   if(token){
   //     navigate(form, {replace: true })
@@ -48,14 +49,15 @@ const SignUp = () => {
     googleSignIn()
     .then(result => {
       const user = result.user;
-      saveUser(user.displayName, user.email, user.photoURL);
+      const role = 'user'
+      saveUser(user.displayName, user.email, role);
     })
     .then(error => console.error(error))
 }
 
-  const saveUser = (name, email, role,id) => {
+  const saveUser = (name, email, role, id = '') => {
       const user = {name, email, role, id};
-      fetch('http://localhost:5000/users', {
+      fetch('https://ghore-baire-learning-server.vercel.app/users', {
           method: 'POST',
           headers: {
             'content-type': 'application/json'
@@ -65,12 +67,12 @@ const SignUp = () => {
         .then(res => res.json())
         .then(data => {
           console.log(data)
-          navigate(form, {replace: true })
+          navigate(from, {replace: true })
         })
   }
 
   // const getUserToken = email =>{
-  //   fetch(`http://localhost:5000/jwt?email=${email}`)
+  //   fetch(`https://ghore-baire-learning-server.vercel.app/jwt?email=${email}`)
   //   .then(res => res.json())
   //   .then(data =>{
   //     if(data.accessToken){
@@ -148,11 +150,11 @@ const SignUp = () => {
             <button className="btn btn-primary">sign up</button>
           </div>
           <div className="divider">OR</div>
-          {/* <div className="form-control mt-6 ">
+          <div className="form-control mt-6 ">
             <button onClick={handleGoogleSignIn} className="flex items-center justify-center btn btn-secondary btn-outline">
               <FaGoogle className="mr-2"></FaGoogle> sign up With Google
             </button>
-          </div> */}
+          </div>
         </form>
       </div>
     </div>

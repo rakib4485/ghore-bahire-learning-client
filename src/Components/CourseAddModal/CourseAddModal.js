@@ -36,7 +36,7 @@ const CourseAddModal = () => {
 
     console.log(course);
 
-    fetch('http://localhost:5000/courses', {
+    fetch('https://ghore-baire-learning-server.vercel.app/courses', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
