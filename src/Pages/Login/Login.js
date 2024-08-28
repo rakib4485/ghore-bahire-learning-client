@@ -4,40 +4,40 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import { FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
-    const {signIn, googleSignIn} = useContext(AuthContext);
-    const [loginUserEmail, setLoginUserEmail] = useState('');
-    // const [token] = useToken(loginUserEmail);
-    const navigate = useNavigate();
-    const location = useLocation();
+  const { signIn, googleSignIn } = useContext(AuthContext);
+  const [loginUserEmail, setLoginUserEmail] = useState('');
+  // const [token] = useToken(loginUserEmail);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    const from = location.state?.from?.pathname || "/";
-    console.log(from);
+  const from = location.state?.from?.pathname || "/";
+  console.log(from);
 
-    // if(token){
-    //   navigate(from, {replace: true});
-    // }
+  // if(token){
+  //   navigate(from, {replace: true});
+  // }
 
-    const handleLogin = event =>{
-        event.preventDefault();
+  const handleLogin = event => {
+    event.preventDefault();
 
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        signIn(email, password)
-        .then(result =>{
-          const user = result.user;
-          console.log(user);
-          // setLoginUserEmail(email);
-          navigate(form, {replace: true })
-        })
-        .then(err => {
-          console.error(err);
-        })
-        form.reset();
-    }
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    signIn(email, password)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+        // setLoginUserEmail(email);
+        navigate(form, { replace: true })
+      })
+      .then(err => {
+        console.error(err);
+      })
+    form.reset();
+  }
 
-    const handleGoogleSignIn = () =>{
-      googleSignIn()
+  const handleGoogleSignIn = () => {
+    googleSignIn()
       .then(result => {
         const user = result.user;
         saveUser(user.displayName, user.email, user.photoURL);
@@ -45,23 +45,24 @@ const Login = () => {
       .then(error => console.error(error))
   }
 
-    const saveUser = (name, email) => {
-        // const user = {name, email};
-        // fetch('http://localhost:5000/users', {
-        //     method: 'POST',
-        //     headers: {
-        //       'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(user)
-        //   })
-        //   .then(res => res.json())
-        //   .then(data => {
-        //     setLoginUserEmail(email);
-        //   })
-      }
-    return (
-        <div className='min-h-screen' style={{backgroundImage: "url(https://i.ibb.co/PMY2k56/login.jpg)", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat"}}>
-            <div className="py-20">
+  const saveUser = (name, email, role, id = '') => {
+    const user = { name, email, role, id };
+    fetch('https://ghore-baire-learning-server.vercel.app/users', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        navigate(from, { replace: true })
+      })
+  }
+  return (
+    <div className='min-h-screen' style={{ backgroundImage: "url(https://i.ibb.co/PMY2k56/login.jpg)", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
+      <div className="py-20">
         <form onSubmit={handleLogin} className="card-body bg-white md:w-[70%] lg:w-[40%] mx-auto rounded-md">
           <div className="flex justify-between items-center">
             <div className="text-center md:w-1/2">
@@ -119,8 +120,8 @@ const Login = () => {
           </div>
         </form>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Login;
