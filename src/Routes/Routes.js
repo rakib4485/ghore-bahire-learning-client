@@ -12,6 +12,7 @@ import TeacherDashboard from "../Pages/Dashboard/TeacherDashboard";
 import TeacherRoutes from "./TeacherRoutes";
 import Profile from "../Pages/Profile/Profile";
 import AuthLayout from "../Layout/Main/AuthLayout/AuthLayout";
+import TeacherView from "../Pages/TeacherView/TeacherView/TeacherView";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
             {
                 path: '/contact',
                 element: <Contact/>
+            },
+            {
+                path: '/teacher',
+                element: <TeacherView/>
             },
             {
                 path: '/my',
