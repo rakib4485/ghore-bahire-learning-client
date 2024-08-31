@@ -15,6 +15,10 @@ import AdminDashboard from "../Pages/AdminDashboard/AdminDashboard";
 import AdminRoutes from "./AdminRoutes";
 import DashboardLayout from "../Layout/DashboardLayout";
 import ManageStudent from "../Pages/AdminDashboard/ManageStudent";
+import AuthLayout from "../Layout/Main/AuthLayout/AuthLayout";
+import TeacherView from "../Pages/TeacherView/TeacherView/TeacherView";
+import ManageTeacher from "../Pages/AdminDashboard/ManageTeacher";
+import ManageAdmin from "../Pages/AdminDashboard/ManageAdmin";
 
 const router = createBrowserRouter([
     {
@@ -34,20 +38,19 @@ const router = createBrowserRouter([
                 element: <Contact/>
             },
             {
-                path: '/login',
-                element: <Login/>
-            },
-            {
-                path: '/signup',
-                element: <SignUp/>
-            },
-            {
                 path: '/my',
                 element: <PrivateRoutes><Dashboard/></PrivateRoutes>
             },
             {
                 path: '/my-teacher',
                 element: <PrivateRoutes><TeacherRoutes><TeacherDashboard/></TeacherRoutes></PrivateRoutes>
+            },
+            {
+                path: 'course-edit/:id',
+                element: <PrivateRoutes><TeacherView></TeacherView></PrivateRoutes>,
+                loader: ({params}) => {
+                    return fetch (`http://localhost:5000/course-edit/${params.id}`)
+                }
             },
             {
                 path: '/course-details',
@@ -72,6 +75,34 @@ const router = createBrowserRouter([
                 path: '/admin-dashboard/manage-user',
                 element: <ManageStudent/>
             },
+            {
+                path: '/admin-dashboard/manage-teacher',
+                element: <ManageTeacher/>
+            },
+            {
+                path: '/admin-dashboard/manage-administator',
+                element: <ManageAdmin/>
+            },
+        ]
+    },
+    {
+        path: '/login',
+        element: <AuthLayout/>,
+        children: [
+            {
+                path: '/login',
+                element: <Login/>
+            }
+        ]
+    },
+    {
+        path: '/signup',
+        element: <AuthLayout/>,
+        children: [
+            {
+                path: '/signup',
+                element: <SignUp/>
+            }
         ]
     }
 ]);

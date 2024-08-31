@@ -26,7 +26,7 @@ const CourseHeader = () => {
                 <h2 className="text-xl font-semibold">Welcome To Big Data & Iot</h2>
             </div>
             <div className='text-center my-5'>
-                <img src={courseImg} alt="" className='text-center mx-auto' />
+                {/* <img src={courseImg} alt="" className='text-center mx-auto' /> */}
             </div>
             <div className='font-serif	text-[#BA4A00] text-justify bg-white rounded-lg my-10'>
                 <h2 className="text-xl font-bold uppercase text-black bg-[#E4E9EF] py-5 rounded-t-lg pl-5">welcome letter</h2>
