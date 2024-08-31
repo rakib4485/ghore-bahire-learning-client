@@ -98,7 +98,9 @@ const SignUp = () => {
           <p>Welcome Back</p>
           </div>
           <form onSubmit={handleSignup}>
-            <input type="text" name="name" className='input input-bordered border-blue-300 rounded-full w-full max-w-xs my-4' placeholder='Full Name' id="" />
+            <input type="text" name="name" className='input input-bordered border-blue-300 rounded-full w-full max-w-xs' placeholder='Full Name' id="" />
+            <br />
+            <input type="text" name="id" className='input input-bordered border-blue-300 rounded-full w-full max-w-xs my-4' placeholder='Student ID' id="" />
             <br />
             <input type="email" className="input input-bordered rounded-full border-blue-300 w-full max-w-xs" name="email" placeholder='Email Address' id="" />
             <br />

@@ -11,6 +11,7 @@ import CourseDetails from "../Pages/CourseDetails/CourseDetails";
 import TeacherDashboard from "../Pages/Dashboard/TeacherDashboard";
 import TeacherRoutes from "./TeacherRoutes";
 import Profile from "../Pages/Profile/Profile";
+import AuthLayout from "../Layout/Main/AuthLayout/AuthLayout";
 
 const router = createBrowserRouter([
     {
@@ -30,14 +31,6 @@ const router = createBrowserRouter([
                 element: <Contact/>
             },
             {
-                path: '/login',
-                element: <Login/>
-            },
-            {
-                path: '/signup',
-                element: <SignUp/>
-            },
-            {
                 path: '/my',
                 element: <PrivateRoutes><Dashboard/></PrivateRoutes>
             },
@@ -52,6 +45,26 @@ const router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <PrivateRoutes><Profile/></PrivateRoutes>
+            }
+        ]
+    },
+    {
+        path: '/login',
+        element: <AuthLayout/>,
+        children: [
+            {
+                path: '/login',
+                element: <Login/>
+            }
+        ]
+    },
+    {
+        path: '/signup',
+        element: <AuthLayout/>,
+        children: [
+            {
+                path: '/signup',
+                element: <SignUp/>
             }
         ]
     }
