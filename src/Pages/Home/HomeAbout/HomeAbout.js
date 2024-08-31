@@ -34,7 +34,7 @@ const HomeAbout = () => {
         <div className='mx-[10%] mt-20'>
             <div className='grid grid-cols-2 gap-10'>
                 <div className='w-[60%] mx-auto'>
-                    <h3 className="text-3xl font-bold text-center">What is Ghore-Bahire Learning?</h3>
+                    <h3 className="text-3xl font-bold text-center">What is COU E-Learning System?</h3>
                     <p className='text-center'>Blended Learning Center is the digital teaching and learning hub of Daffodil International University. The platform aims to connect teachers and students effectively allowing teachers to track progress of individual students and better facilitate their learning. </p>
                 </div>
                 <div>

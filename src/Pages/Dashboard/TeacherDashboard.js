@@ -38,7 +38,7 @@ const TeacherDashboard = () => {
     ]
     return (
         <div className='px-[8%] bg-[#F1F4F5]'>
-            <h2 className="text-2xl font-semibold py-10">Ghore Bahire Learning Teacher Dashboard</h2>
+            <h2 className="text-2xl font-semibold py-10">COU E-Learing System Teacher Dashboard</h2>
             <div className='p-4 rounded-md bg-white'>
                 <h4 className="text-xl font-semibold">My Courses</h4>
 
