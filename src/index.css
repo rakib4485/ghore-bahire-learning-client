@@ -16,6 +16,7 @@ body {
 
 .auth-right{
   background: linear-gradient(180deg,#0575e6,#02298a 84.79%,#021b79);
+  height: 100%;
 }
 
 .learn-btn{

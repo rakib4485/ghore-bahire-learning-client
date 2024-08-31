@@ -1,8 +1,7 @@
 import React from 'react';
-import courseImg from '../../../assets/image (2).png'
 import { Link } from 'react-router-dom';
 
-const CourseHeader = () => {
+const TeacherHeader = () => {
     const weeks = [
         {
             weekNo: 1
@@ -51,9 +50,10 @@ const CourseHeader = () => {
             </div>
             <div className='font-serif text-justify bg-white rounded-lg my-10'>
                 <h4 className="text-xl font-bold uppercase text-black bg-[#E4E9EF] py-5 rounded-t-lg pl-5">Course Rationale:</h4>
-                <h5 className="text-lg text-justify p-5">
-                    Digital Image Processing is a core subject of Computer Science and Engineering. It deals with various types of digital image processing techniques that are widely used in medical research and scientific analysis. The application area of image processing is huge which covers medical science, industry, military equipment, nuclear analysis, bioinformatics, traffic control and so on. With the advancement of various image processing techniques scientific community can analyze other planets in our galaxy..
-                </h5>
+               <form action="">
+                <textarea name="" className='w-full h-28 p-2 border border-solid' id="" placeholder='Digital Image Processing is a core subject of Computer Science and Engineering. It deals with various types of digital image processing techniques that are widely used in medical research and scientific analysis. The application area of image processing is huge which covers medical science, industry, military equipment, nuclear analysis, bioinformatics, traffic control and so on. With the advancement of various image processing techniques scientific community can analyze other planets in our galaxy..'></textarea>
+                <input type="submit" value="Submit" className='bg-blue-600 px-3 py-2 rounded-md ml-3 mb-2 text-white' />
+               </form>
             </div>
             <div className='font-serif text-justify bg-white rounded-lg my-10'>
                 <h4 className="text-xl font-bold uppercase text-black bg-[#E4E9EF] py-5 rounded-t-lg pl-5">Quick Access link</h4>
@@ -70,4 +70,4 @@ const CourseHeader = () => {
     );
 };
 
-export default CourseHeader;
+export default TeacherHeader;
