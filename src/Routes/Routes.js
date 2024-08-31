@@ -11,6 +11,10 @@ import CourseDetails from "../Pages/CourseDetails/CourseDetails";
 import TeacherDashboard from "../Pages/Dashboard/TeacherDashboard";
 import TeacherRoutes from "./TeacherRoutes";
 import Profile from "../Pages/Profile/Profile";
+import AdminDashboard from "../Pages/AdminDashboard/AdminDashboard";
+import AdminRoutes from "./AdminRoutes";
+import DashboardLayout from "../Layout/DashboardLayout";
+import ManageStudent from "../Pages/AdminDashboard/ManageStudent";
 
 const router = createBrowserRouter([
     {
@@ -52,7 +56,22 @@ const router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <PrivateRoutes><Profile/></PrivateRoutes>
-            }
+            },
+            
+        ]
+    },
+    {
+        path: '/admin-dashboard',
+        element: <PrivateRoutes><AdminRoutes><DashboardLayout/></AdminRoutes></PrivateRoutes>,
+        children: [
+            {
+                path: '/admin-dashboard',
+                element: <AdminDashboard/>
+            },
+            {
+                path: '/admin-dashboard/manage-user',
+                element: <ManageStudent/>
+            },
         ]
     }
 ]);

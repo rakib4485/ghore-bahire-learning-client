@@ -47,7 +47,7 @@ const Login = () => {
 
   const saveUser = (name, email, role, id = '') => {
     const user = { name, email, role, id };
-    fetch('https://ghore-baire-learning-server.vercel.app/users', {
+    fetch('http://localhost:5000/users', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

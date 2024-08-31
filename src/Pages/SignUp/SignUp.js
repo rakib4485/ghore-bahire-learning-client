@@ -57,7 +57,7 @@ const SignUp = () => {
 
   const saveUser = (name, email, role, id = '') => {
       const user = {name, email, role, id};
-      fetch('https://ghore-baire-learning-server.vercel.app/users', {
+      fetch('http://localhost:5000/users', {
           method: 'POST',
           headers: {
             'content-type': 'application/json'
@@ -72,7 +72,7 @@ const SignUp = () => {
   }
 
   // const getUserToken = email =>{
-  //   fetch(`https://ghore-baire-learning-server.vercel.app/jwt?email=${email}`)
+  //   fetch(`http://localhost:5000/jwt?email=${email}`)
   //   .then(res => res.json())
   //   .then(data =>{
   //     if(data.accessToken){
