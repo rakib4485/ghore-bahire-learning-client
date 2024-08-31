@@ -61,66 +61,6 @@ const Login = () => {
       })
   }
   return (
-    // <div className='min-h-screen' style={{ backgroundImage: "url(https://i.ibb.co/PMY2k56/login.jpg)", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
-    //   <div className="py-20">
-    //     <form onSubmit={handleLogin} className="card-body bg-white md:w-[70%] lg:w-[40%] mx-auto rounded-md">
-    //       <div className="flex justify-between items-center">
-    //         <div className="text-center md:w-1/2">
-    //           <h1 className="text-xl font-bold md:text-3xl uppercase">
-    //             Log In
-    //           </h1>
-    //         </div>
-    //         <div>
-    //           <Link>
-    //             <button className="btn btn-neutral mr-2">Login</button>
-    //           </Link>
-    //           <Link to="/signup">
-    //             <button className="btn btn-dark btn-outline mr-2">
-    //               Sign Up
-    //             </button>
-    //           </Link>
-    //         </div>
-    //       </div>
-    //       <div className="form-control">
-    //         <label className="label">
-    //           <span className="label-text">Email</span>
-    //         </label>
-    //         <input
-    //           type="email"
-    //           name="email"
-    //           placeholder="email"
-    //           className="input input-bordered"
-    //         />
-    //       </div>
-    //       <div className="form-control">
-    //         <label className="label">
-    //           <span className="label-text">Password</span>
-    //         </label>
-    //         <input
-    //           type="password"
-    //           name="password"
-    //           placeholder="password"
-    //           className="input input-bordered"
-    //         />
-    //         {/* <label className="label">
-    //           <Link className="label-text-alt link link-hover">
-    //             Forgot password?
-    //           </Link>
-    //         </label> */}
-    //       </div>
-
-    //       <div className="form-control mt-6">
-    //         <button className="btn btn-primary">Login</button>
-    //       </div>
-    //       <div className="divider">OR</div>
-    //       <div className="form-control mt-6 ">
-    //         <button onClick={handleGoogleSignIn} className="flex items-center justify-center btn btn-secondary btn-outline">
-    //           <FaGoogle className="mr-2"></FaGoogle> Login With Google
-    //         </button>
-    //       </div>
-    //     </form>
-    //   </div>
-    // </div>
     <div className='grid grid-cols-2 gap-5'>
       <div className='auth-right'>
         <div className='text-white my-16 ml-16 mt-48'>
