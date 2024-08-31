@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/BLC logo.png'
+import logo from '../../assets/logo.png'
 import { AuthContext } from '../../contexts/AuthProvider';
 import useTeacher from '../../hooks/useTeacher';
 import { FaSignOutAlt, FaTachometerAlt, FaUser, FaUserAlt } from 'react-icons/fa';
@@ -63,7 +63,7 @@ const Navbar = () => {
           </ul>
 
         </div>
-        <Link to='/my' className=" normal-case text-xl "><img src={logo} alt="" className='h-20 w-40' /></Link>
+        <Link to='/my' className=""><img src={logo} alt="" className='h-20 w-40 rounded-full' /></Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="flex gap-3 px-1 font-bold text-md uppercase">
