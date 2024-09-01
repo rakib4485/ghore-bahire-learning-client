@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SingleWeek = ({ week }) => {
+const SingleWeek = ({ week, index }) => {
     const { weekName, title, contentDetails, contentLinks, videoLink } = week;
     console.log(week);
     return (
         <div className='bg-white rounded-md p-4 mt-10'>
             <div className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-200 flex items-center gap-10 mb-10'>
                 <div className='bg-[#AAADB0] p-7 w-[200px] rounded-r-3xl'>
-                <h2 className="text-3xl font-bold uppercase text-white ">{weekName}</h2>
+                <h2 className="text-3xl font-bold uppercase text-white ">Week - {index + 1}</h2>
                 </div>
                 <div className="flex justify-start">
                 <h2 className="text-2xl font-bold text-center text-white">{title}</h2>

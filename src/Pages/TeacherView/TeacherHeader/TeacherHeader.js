@@ -69,7 +69,7 @@ const TeacherHeader = ({course}) => {
                 <div className="text-lg text-justify p-5 flex gap-4">
                     {
                         course.weeks.map((week, idx) => <div key={idx} className='bg-slate-300 px-3 py-2 rounded'>
-                        <Link>Week - {week.weekNo}</Link>
+                        <Link>Week - {idx+1}</Link>
                     </div>)
                     }
                     
