@@ -92,7 +92,7 @@ const CourseWeeks = () => {
         <div>
             <div>
                 {
-                    weeks.map(( week, idx) => <SingleWeek key={idx} week={week}/>)
+                    weeks.map(( week, idx) => <SingleWeek key={idx} week={week} index={idx}/>)
                 }
             </div>
         </div>

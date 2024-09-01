@@ -3,6 +3,9 @@ import { Link, useLoaderData } from 'react-router-dom';
 import TeacherHeader from '../TeacherHeader/TeacherHeader';
 import AddWeek from '../AddWeek/AddWeek';
 import AddTask from '../AddTask/AddTask';
+import AddWeekModal from '../../../Components/AddWeekModal/AddWeekModal';
+import TeacherWeek from '../TeacherWeek/TeacherWeek';
+import AddTaskModal from '../../../Components/AddTaskModal/AddTaskModal';
 
 const TeacherView = () => {
     const course = useLoaderData();
@@ -22,9 +25,12 @@ const TeacherView = () => {
             </div>
             <div>
                 <TeacherHeader course={course}/>
+                <TeacherWeek couese={course}/>
                 <AddWeek/>
                 <AddTask/>
             </div>
+            <AddWeekModal course={course}/>
+            <AddTaskModal course={course}/>
         </div>
     );
 };
