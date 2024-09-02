@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
+import toast from 'react-hot-toast';
 
-const CourseAddModal = () => {
+const CourseAddModal = ({setOpenModal, refetch}) => {
   const {user} = useContext(AuthContext)
   const handleCourseModal = event => {
     event.preventDefault();
@@ -46,7 +47,9 @@ const CourseAddModal = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data);
-
+        toast.success("Course Added successfully");
+        setOpenModal(false)
+        refetch();
       })
 
   }
@@ -78,8 +81,6 @@ const CourseAddModal = () => {
               <option value="Fall-2022">Fall-2022</option>
               <option value="Spring-2022">Spring-2022</option>
             </select>
-            <input name='phone' type="text" placeholder="Phone Number" className="input input-bordered w-full" />
-            <p className='text-red-500'> Note: You must have to complete the payment for confirm your appointment</p>
             <input className='btn btn-accent w-full' type="submit" value="Submit" />
           </form>
         </div>

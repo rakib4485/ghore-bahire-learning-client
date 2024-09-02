@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import bg from '../../assets/course-bg.jpg'
 import addCourse from '../../assets/add-course.png'
@@ -6,39 +6,15 @@ import useTeacher from '../../hooks/useTeacher';
 import { AuthContext } from '../../contexts/AuthProvider';
 import CourseAddModal from '../../Components/CourseAddModal/CourseAddModal';
 import { useQuery } from '@tanstack/react-query';
+import Loading from '../../Components/Loading/Loading';
 
 const TeacherDashboard = () => {
     const { user } = useContext(AuthContext)
     const [isTeacher] = useTeacher(user?.email)
     console.log(isTeacher)
-    // const courses = [
-    //     {
-    //         id: 1,
-    //         name: 'Big Data & Iot',
-    //         semester: 'CSE Spring 2024',
-    //         bg: 'bg-[#794F22]'
-    //     },
-    //     {
-    //         id: 2,
-    //         name: 'Big Data & Iot Lab',
-    //         semester: 'CSE Spring 2024',
-    //         bg: 'bg-[#7C2F2F]'
-    //     },
-    //     {
-    //         id: 3,
-    //         name: 'Web Development',
-    //         semester: 'CSE Spring 2024',
-    //         bg: 'bg-[#204E8A]'
-    //     },
-    //     {
-    //         id: 4,
-    //         name: 'Graphic Design',
-    //         semester: 'CSE Spring 2024',
-    //         bg: 'bg-[#175B43]'
-    //     },
-    // ]
+    const [openModal, setOpenModal] = useState(true);
 
-    const {data: courses = []} = useQuery({
+    const {data: courses = [],isLoading,  refetch} = useQuery({
         queryKey: ['course', user?.email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/my-courses?email=${user?.email}`);
@@ -59,6 +35,10 @@ const TeacherDashboard = () => {
             return '';
         }
       };
+
+      if(isLoading){
+        return <Loading/>
+      }
 
     return (
         <div className='px-[8%] bg-[#F1F4F5]'>
@@ -107,7 +87,10 @@ const TeacherDashboard = () => {
                 </div>
             </div>
 
-            <CourseAddModal/>
+            {
+                openModal && 
+                <CourseAddModal setOpenModal={setOpenModal} refetch={refetch}/>
+            }
         </div>
     );
 };

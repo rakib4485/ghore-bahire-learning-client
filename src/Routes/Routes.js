@@ -19,6 +19,8 @@ import AuthLayout from "../Layout/Main/AuthLayout/AuthLayout";
 import TeacherView from "../Pages/TeacherView/TeacherView/TeacherView";
 import ManageTeacher from "../Pages/AdminDashboard/ManageTeacher";
 import ManageAdmin from "../Pages/AdminDashboard/ManageAdmin";
+import TaskPage from "../Components/TaskPage";
+import ViweTasks from "../Pages/ViewTasks/ViweTasks";
 
 const router = createBrowserRouter([
     {
@@ -53,12 +55,29 @@ const router = createBrowserRouter([
                 }
             },
             {
-                path: '/course-details',
-                element: <PrivateRoutes><CourseDetails/></PrivateRoutes>
+                path: '/course-details/:id',
+                element: <PrivateRoutes><CourseDetails/></PrivateRoutes>,
+                loader: ({params}) => {
+                    return fetch (`http://localhost:5000/course/${params.id}`)
+                }
             },
             {
                 path: '/profile',
                 element: <PrivateRoutes><Profile/></PrivateRoutes>
+            },
+            {
+                path: '/course-details/:id/submit-task',
+                element: <PrivateRoutes><TaskPage/></PrivateRoutes>,
+                loader: ({params}) => {
+                    return fetch (`http://localhost:5000/course/${params.id}`)
+                }
+            },
+            {
+                path: '/course-details/:id/view-task',
+                element: <PrivateRoutes><ViweTasks/></PrivateRoutes>,
+                loader: ({params}) => {
+                    return fetch (`http://localhost:5000/course/${params.id}`)
+                }
             },
             
         ]

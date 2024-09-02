@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
 const TeacherHeader = ({course}) => {
@@ -11,23 +12,28 @@ const TeacherHeader = ({course}) => {
             return data;
         }
     })
-    const weeks = [
-        {
-            weekNo: 1
-        },
-        {
-            weekNo: 2
-        },
-        {
-            weekNo: 3
-        },
-        {
-            weekNo: 4
-        },
-        {
-            weekNo: 5
-        },
-    ]
+    
+    const handleEdit = event => {
+        event.preventDefault();
+
+        const rationale = event.target.rationale.value;
+
+        const info = {
+            rationale
+        }
+        fetch(`http://localhost:5000/add-rationale/${course._id}`, {
+            method: 'PUT',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify(info)
+          })
+            .then(res => res.json())
+            .then(data => {
+              console.log(data);
+              toast.success("Rationale added successfully");
+            })
+    }
     return (
         <div className='p-6 bg-slate-300 rounded-md'>
             <div>
@@ -59,8 +65,8 @@ const TeacherHeader = ({course}) => {
             </div>
             <div className='font-serif text-justify bg-white rounded-lg my-10'>
                 <h4 className="text-xl font-bold uppercase text-black bg-[#E4E9EF] py-5 rounded-t-lg pl-5">Course Rationale:</h4>
-               <form action="">
-                <textarea name="" className='w-full h-28 p-2 border border-solid' id="" placeholder='Digital Image Processing is a core subject of Computer Science and Engineering. It deals with various types of digital image processing techniques that are widely used in medical research and scientific analysis. The application area of image processing is huge which covers medical science, industry, military equipment, nuclear analysis, bioinformatics, traffic control and so on. With the advancement of various image processing techniques scientific community can analyze other planets in our galaxy..'></textarea>
+               <form onSubmit={handleEdit}>
+                <textarea name="rationale" className='w-full h-28 p-2 border border-solid' id="" placeholder='Digital Image Processing is a core subject of Computer Science and Engineering. It deals with various types of digital image processing techniques that are widely used in medical research and scientific analysis. The application area of image processing is huge which covers medical science, industry, military equipment, nuclear analysis, bioinformatics, traffic control and so on. With the advancement of various image processing techniques scientific community can analyze other planets in our galaxy..'></textarea>
                 <input type="submit" value="Submit" className='bg-blue-600 px-3 py-2 rounded-md ml-3 mb-2 text-white' />
                </form>
             </div>
