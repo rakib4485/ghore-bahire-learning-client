@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import Loading from '../../Components/Loading/Loading';
 import toast from 'react-hot-toast';
 import { MdEdit } from 'react-icons/md';
+import bg from '../../assets/course-bg.jpg'
 
 const Profile = () => {
     const { user, updateUser } = useContext(AuthContext)
@@ -22,6 +23,15 @@ const Profile = () => {
     })
 
     console.log(currentUser)
+
+    const {data: courses = []} = useQuery({
+        queryKey: ['course', user?.email],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/my-added-course?email=${user?.email}`);
+            const data = await res.json();
+            return data;
+        }
+    })
 
     const handleEditProfile = event => {
         event.preventDefault();
@@ -64,7 +74,18 @@ const Profile = () => {
                     })
             })
     }
-
+    const getCardStyle = (index) => {
+        switch (index % 3) {
+          case 0: // For 1st, 4th, 7th, etc.
+            return 'bg-[#794F22]';
+          case 1: // For 2nd, 5th, 8th, etc.
+            return 'bg-[#7C2F2F]';
+          case 2: // For 3rd, 6th, 9th, etc.
+            return 'bg-[#204E8A]';
+          default:
+            return '';
+        }
+      };
     const closeModal = (name) => {
         // Get the modal element
         const modal = document.getElementById(name);
@@ -140,10 +161,34 @@ const Profile = () => {
                         <h2 className="text-2xl text-center mt-5">{user?.displayName} {` `} {currentUser.id}</h2>
                     </div>
                 </div>
-                <div className='w-[70%] bg-white rounded'>
+                <div className='w-[70%] bg-white rounded max-h-[500px] overflow-auto'>
                     <div role="tablist" className="tabs tabs-bordered">
                         <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="Courses" defaultChecked />
-                        <div role="tabpanel" className="tab-content p-10">Courses</div>
+                        <div role="tabpanel" className="tab-content p-10">
+                            <div className='grid grid-cols-2 gap-6'>
+                            {
+                                courses.map((course, index) => 
+                                    <Link to={`/course-details/${course._id}`}>
+                            <div className='h-44 relative group overflow-hidden' style={{
+                                background: `url(${bg})`, backgroundPosition: 'center',
+                                backgroundRepeat: 'no-repeat'
+                                
+                            }}>
+                                <div className={ `${getCardStyle(index)} text-white p-3 w-full absolute bottom-0 group-hover:scale-110 duration-500`}>
+                                        <h5 className="text-lg font-semibold">{course.courseSemester}</h5>
+                                        <h4 className="text-xl font-semibold">{course.courseName}</h4>
+                                    </div>
+                                <div className='items-center justify-center h-full w-full backdrop-brightness-50 bg-white/10 hidden group-hover:block duration-500'>
+                                    <div className='flex items-center justify-center h-full w-full'>
+                                    <h4 className="text-xl font-bold text-white">View Course</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            </Link>
+                                )
+                            }
+                            </div>
+                        </div>
 
                         <input
                             type="radio"
