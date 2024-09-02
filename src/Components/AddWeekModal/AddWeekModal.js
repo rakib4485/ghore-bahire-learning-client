@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
 import toast from 'react-hot-toast';
 
-const AddWeekModal = ({course}) => {
+const AddWeekModal = ({course, setOpenModal}) => {
     const {user} = useContext(AuthContext)
   const handleCourseModal = event => {
     event.preventDefault();
@@ -35,7 +35,10 @@ const AddWeekModal = ({course}) => {
       .then(res => res.json())
       .then(data => {
         console.log(data);
+        setOpenModal(false);
         toast.success("week added successfully");
+        window.location.reload()
+        
       })
 
   }

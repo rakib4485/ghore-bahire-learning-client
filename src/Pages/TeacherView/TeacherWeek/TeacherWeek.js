@@ -6,7 +6,7 @@ const TeacherWeek = ({couese}) => {
         <div>
             <div>
                 {
-                    couese.weeks.map(( week, idx) => <SingleWeek key={idx} week={week} index={idx}/>)
+                    couese.weeks.map(( week, idx) => <SingleWeek key={idx} week={week} index={idx} id={couese._id}/>)
                 }
             </div>
         </div>
