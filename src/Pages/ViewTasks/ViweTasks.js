@@ -14,7 +14,7 @@ console.log(week)
     const {data: tasks = [], isLoading} = useQuery({
         queryKey: ['task', week],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/view-task/${course._id}/?week=${week-1}`);
+            const res = await fetch(`https://ghore-baire-learning-server.vercel.app/view-task/${course._id}/?week=${week-1}`);
             const data = await res.json()
             return data;
         }

@@ -5,7 +5,7 @@ const useJoin = (email, id) => {
     const [isJoin, setIsJoin] = useState(false);
     const [isJoinLoading, setIsJoinLoading] = useState(true);
     useEffect( () =>{
-        fetch(`http://localhost:5000/user/isJoin/${id}?email=${email}`)
+        fetch(`https://ghore-baire-learning-server.vercel.app/user/isJoin/${id}?email=${email}`)
         .then(res => res.json())
         .then(data => {
             setIsJoin(data.isJoin);

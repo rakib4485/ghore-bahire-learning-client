@@ -51,7 +51,7 @@ const DashboardLayout = () => {
     }
 
     const makeMeOwner = () => {
-        const url = `http://localhost:5000/user/update/request?email=${user?.email}`;
+        const url = `https://ghore-baire-learning-server.vercel.app/user/update/request?email=${user?.email}`;
         fetch(url, {
             method: 'PUT',
             headers: {

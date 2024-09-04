@@ -26,14 +26,14 @@ const ManageAdmin = () => {
     const { data: users = [], isLoading, refetch } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users/');
+            const res = await fetch('https://ghore-baire-learning-server.vercel.app/users/');
             const data = await res.json();
             return data;
         }
     });
 
     const handleRole = () =>{
-        const url = `http://localhost:5000/users/update/${requestEmail}?action=${role}`;
+        const url = `https://ghore-baire-learning-server.vercel.app/users/update/${requestEmail}?action=${role}`;
         fetch(url, {
                 method: 'PUT',
                 headers: {

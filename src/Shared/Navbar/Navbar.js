@@ -62,7 +62,7 @@ const Navbar = () => {
           </ul>
 
         </div>
-        <Link to='/' className=""><img src={logo} alt="" className='h-20 w-40 rounded-full' /></Link>
+        <Link to='/' className="flex gap-2 items-center"><img src={logo} alt="" className='h-20 w-40 rounded-full' /> COU E-Academic platform</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="flex gap-3 px-1 font-bold text-md uppercase">

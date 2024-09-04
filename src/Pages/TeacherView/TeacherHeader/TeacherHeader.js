@@ -7,7 +7,7 @@ const TeacherHeader = ({course}) => {
     const {data: instactor = [] } = useQuery({
         queryKey: ['instactor', course._id],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/single-user?email=${course.teacherProfile.email}`);
+            const res = await fetch(`https://ghore-baire-learning-server.vercel.app/single-user?email=${course.teacherProfile.email}`);
             const data = await res.json();
             return data;
         }
@@ -21,7 +21,7 @@ const TeacherHeader = ({course}) => {
         const info = {
             rationale
         }
-        fetch(`http://localhost:5000/add-rationale/${course._id}`, {
+        fetch(`https://ghore-baire-learning-server.vercel.app/add-rationale/${course._id}`, {
             method: 'PUT',
             headers: {
               'content-type': 'application/json'

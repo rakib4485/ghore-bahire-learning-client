@@ -16,7 +16,7 @@ const EnrollmentPage = ({ course }) => {
         }
 
         if(ekey === course.coursePassword){
-            fetch(`http://localhost:5000/add-member/${course._id}`, {
+            fetch(`https://ghore-baire-learning-server.vercel.app/add-member/${course._id}`, {
                 method: 'PUT',
                 headers: {
                   'content-type': 'application/json'

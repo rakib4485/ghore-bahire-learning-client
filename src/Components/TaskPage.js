@@ -18,7 +18,7 @@ const TaskPage = () => {
   const { data: singleUser = [] } = useQuery({
     queryKey: ['user', user?.email],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/single-user?email=${user?.email}`);
+      const res = await fetch(`https://ghore-baire-learning-server.vercel.app/single-user?email=${user?.email}`);
       const data = await res.json();
       return data;
     }
@@ -42,7 +42,7 @@ const TaskPage = () => {
       date: formattedDate,
     }
 
-    fetch(`http://localhost:5000/add-task/${course._id}?week=${week - 1}`, {
+    fetch(`https://ghore-baire-learning-server.vercel.app/add-task/${course._id}?week=${week - 1}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json'
