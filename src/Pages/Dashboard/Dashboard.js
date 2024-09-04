@@ -9,7 +9,7 @@ const Dashboard = () => {
     const {data: courses = []} = useQuery({
         queryKey: ['course', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/my-added-course?email=${user?.email}`);
+            const res = await fetch(`https://ghore-baire-learning-server.vercel.app/my-added-course?email=${user?.email}`);
             const data = await res.json();
             return data;
         }
@@ -31,7 +31,7 @@ const Dashboard = () => {
       };
     return (
         <div className='px-[8%] bg-[#F1F4F5] min-h-screen'>
-            <h2 className="text-2xl font-semibold py-10">COU E-Learing System Dashboard</h2>
+            <h2 className="text-2xl font-semibold py-10">COU E-Academic platform Dashboard</h2>
             <div className='p-4 rounded-md bg-white'>
                 <h4 className="text-xl font-semibold">Recently Joined Courses</h4>
 

@@ -51,7 +51,7 @@ const SignUp = () => {
 
   const saveUser = (name, email, role, id = '') => {
       const user = {name, email, role, id};
-      fetch('http://localhost:5000/users', {
+      fetch('https://ghore-baire-learning-server.vercel.app/users', {
           method: 'POST',
           headers: {
             'content-type': 'application/json'
@@ -70,7 +70,7 @@ const SignUp = () => {
     <div className='grid grid-cols-2 gap-5'>
       <div className='auth-right'>
         <div className='text-white my-16 ml-16 mt-48'>
-          <h1 className='text-3xl font-bold'>COU E-Learning</h1>
+          <h1 className='text-3xl font-bold'>COU E-Academic platform</h1>
           <p className='mt-1 mb-3'>Learn, grow, and succeed with our interactive learning system</p>
           <Link to='/' className='learn-btn px-3 py-2 rounded-full'>Learn More</Link>
         </div>

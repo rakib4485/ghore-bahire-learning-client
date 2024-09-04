@@ -25,7 +25,7 @@ const AddWeekModal = ({course, setOpenModal}) => {
 
     console.log(week);
 
-    fetch(`http://localhost:5000/add-weeks/${course._id}`, {
+    fetch(`https://ghore-baire-learning-server.vercel.app/add-weeks/${course._id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json'

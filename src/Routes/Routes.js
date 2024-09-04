@@ -51,14 +51,14 @@ const router = createBrowserRouter([
                 path: 'course-edit/:id',
                 element: <PrivateRoutes><TeacherView></TeacherView></PrivateRoutes>,
                 loader: ({params}) => {
-                    return fetch (`http://localhost:5000/course-edit/${params.id}`)
+                    return fetch (`https://ghore-baire-learning-server.vercel.app/course-edit/${params.id}`)
                 }
             },
             {
                 path: '/course-details/:id',
                 element: <PrivateRoutes><CourseDetails/></PrivateRoutes>,
                 loader: ({params}) => {
-                    return fetch (`http://localhost:5000/course/${params.id}`)
+                    return fetch (`https://ghore-baire-learning-server.vercel.app/course/${params.id}`)
                 }
             },
             {
@@ -69,14 +69,14 @@ const router = createBrowserRouter([
                 path: '/course-details/:id/submit-task',
                 element: <PrivateRoutes><TaskPage/></PrivateRoutes>,
                 loader: ({params}) => {
-                    return fetch (`http://localhost:5000/course/${params.id}`)
+                    return fetch (`https://ghore-baire-learning-server.vercel.app/course/${params.id}`)
                 }
             },
             {
                 path: '/course-details/:id/view-task',
                 element: <PrivateRoutes><ViweTasks/></PrivateRoutes>,
                 loader: ({params}) => {
-                    return fetch (`http://localhost:5000/course/${params.id}`)
+                    return fetch (`https://ghore-baire-learning-server.vercel.app/course/${params.id}`)
                 }
             },
             

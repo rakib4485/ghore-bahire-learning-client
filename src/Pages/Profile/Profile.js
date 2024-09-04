@@ -16,7 +16,7 @@ const Profile = () => {
     const { data: currentUser = [], isLoading, refeatch } = useQuery({
         queryKey: ['user', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/login-user?email=${user?.email}`);
+            const res = await fetch(`https://ghore-baire-learning-server.vercel.app/login-user?email=${user?.email}`);
             const data = await res.json();
             return data;
         }
@@ -27,7 +27,7 @@ const Profile = () => {
     const {data: courses = []} = useQuery({
         queryKey: ['course', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/my-added-course?email=${user?.email}`);
+            const res = await fetch(`https://ghore-baire-learning-server.vercel.app/my-added-course?email=${user?.email}`);
             const data = await res.json();
             return data;
         }
@@ -59,7 +59,7 @@ const Profile = () => {
         }
         updateUser(userInfo)
             .then(() => {
-                fetch(`http://localhost:5000/edit-profile?email=${user?.email}`, {
+                fetch(`https://ghore-baire-learning-server.vercel.app/edit-profile?email=${user?.email}`, {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'
@@ -114,7 +114,7 @@ const Profile = () => {
                     }
                     updateUser(userInfo)
                         .then(() => {
-                            fetch(`http://localhost:5000/edit-profile-picture?email=${user?.email}`, {
+                            fetch(`https://ghore-baire-learning-server.vercel.app/edit-profile-picture?email=${user?.email}`, {
                                 method: 'PUT',
                                 headers: {
                                     'content-type': 'application/json'
