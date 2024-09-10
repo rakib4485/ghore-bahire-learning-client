@@ -2,9 +2,19 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
+import { useQuery } from '@tanstack/react-query';
 
 const EnrollmentPage = ({ course }) => {
     const {user} = useContext(AuthContext)
+
+    const {data: singleUser = []} = useQuery({
+        queryKey: ['user'],
+        queryFn: async () => {
+            const res = await fetch(`https://ghore-baire-learning-server.vercel.app/login-user?email=${user?.email}`);
+            const data = await res.json();
+            return data;
+        }
+    })
     const handleJoin = event =>{
         event.preventDefault();
 
@@ -13,6 +23,8 @@ const EnrollmentPage = ({ course }) => {
         const student = {
             name: user?.displayName,
             email: user?.email,
+            image: user?.photoURL,
+            id: singleUser?.id
         }
 
         if(ekey === course.coursePassword){

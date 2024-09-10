@@ -29,7 +29,8 @@ const CourseAddModal = ({setOpenModal, refetch}) => {
       courseStudents: [
         {
           name: user?.displayName,
-          email: user?.email
+          email: user?.email,
+          image: user?.photoURL
         }
       ],
       weeks: []

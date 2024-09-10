@@ -36,11 +36,13 @@ const TeacherHeader = ({course}) => {
     }
     return (
         <div className='p-6 bg-slate-300 rounded-md'>
+            <div className='flex justify-between items-center'>
             <div>
                 <h2 className="text-xl font-semibold">{course.courseName}</h2>
             </div>
-            <div className='text-center my-5'>
-                {/* <img src={courseImg} alt="" className='text-center mx-auto' /> */}
+            <div className='my-5'>
+                <h1 className='text-blue-700 text-xl font-semibold'>Enrolled Students: {course.courseStudents?.length}</h1>
+            </div>
             </div>
             <div className='font-serif	text-[#BA4A00] text-justify bg-white rounded-lg my-10'>
                 <h2 className="text-xl font-bold uppercase text-black bg-[#E4E9EF] py-5 rounded-t-lg pl-5">welcome letter</h2>
