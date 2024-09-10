@@ -8,7 +8,7 @@ const AddWeek = () => {
             <h4 className="text-xl font-bold uppercase text-black bg-[#E4E9EF] py-5 rounded-t-lg pl-5">Weeks</h4>
             <div className='p-6'>
                 <label htmlFor='add-week-modal'>
-                    <span className='cursor-pointer'>Add Weeks</span>
+                    <span className='cursor-pointer btn btn-primary'>Add Weeks</span>
                 </label>
             </div>
 
