@@ -32,7 +32,7 @@ const CourseHeader = ({course}) => {
             </div>
             <div>
                 <h4 className="text-xl font-bold my-5 text-[#D35400]">Course Instructor</h4>
-                <div className='flex gap-6 items-center'>
+                <div className='md:flex gap-6 items-center'>
                     <img src={instactor.image} alt="" className='h-[200px] w-[200px]' />
                     <div className='text-[#727577] flex flex-col gap-5'>
                         <h5 className="text-lg"><strong>Name: </strong> {instactor?.userInfo?.name}</h5>

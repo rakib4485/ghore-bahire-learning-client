@@ -46,7 +46,7 @@ const TeacherDashboard = () => {
             <div className='p-4 rounded-md bg-white'>
                 <h4 className="text-xl font-semibold">My Courses</h4>
 
-                <div className='grid grid-cols-4 gap-6 mt-10 cursor-pointer'>
+                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 cursor-pointer'>
                     {
                         courses.map((course,index) => (
                             <Link to={`/course-edit/${course._id}`}>
