@@ -145,8 +145,8 @@ const Profile = () => {
             <h2 className="text-[1.714rem] font-semibold uppercase text-[#37474f] text-Poppins">{user?.displayName}</h2>
             <p className='flex gap-4 items-center my-3'><Link to='/my' className='text-blue-400 hover:underline'>Dashboard</Link> <span>/</span> <Link className='text-blue-400 hover:underline'>Profile</Link></p>
 
-            <div className='flex gap-6 mt-5'>
-                <div className='bg-white px-4 py-10 w-[30%] h-[250px] rounded'>
+            <div className='md:flex gap-6 mt-5'>
+                <div className='bg-white px-4 py-10 md:w-[30%] h-[250px] rounded'>
                     <div className="avatar mx-auto">
                         <div className="w-20 ml-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                             {
@@ -161,11 +161,11 @@ const Profile = () => {
                         <h2 className="text-2xl text-center mt-5">{user?.displayName} {` `} {currentUser.id}</h2>
                     </div>
                 </div>
-                <div className='w-[70%] bg-white rounded max-h-[500px] overflow-auto'>
+                <div className='md:w-[70%] bg-white rounded max-h-[500px] overflow-auto mt-10 md:mt-0'>
                     <div role="tablist" className="tabs tabs-bordered">
                         <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="Courses" defaultChecked />
                         <div role="tabpanel" className="tab-content p-10">
-                            <div className='grid grid-cols-2 gap-6'>
+                            <div className='grid md:grid-cols-2 gap-6'>
                             {
                                 courses.map((course, index) => 
                                     <Link to={`/course-details/${course._id}`}>

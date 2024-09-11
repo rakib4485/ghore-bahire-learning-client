@@ -39,26 +39,46 @@ const Navbar = () => {
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
           </label>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-black">
             {menuItems}
             <div className="lg:hidden ">
-              <details className="dropdown">
-                <summary className="btn m-1">open or close</summary>
-                <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                  <li><a>Item 1</a></li>
-                  <li><a>Item 2</a></li>
-                </ul>
-              </details>
               {
                 user?.uid ? (<>
-                  <p className='font-semibold my-5'>{user?.displayName}</p>
-                  <button onClick={handleLogOut} className="bg-gradient-to-r from-sky-500 to-indigo-500 text-white text-lg font-semibold px-5 py-3 rounded-md">Log Out</button>
+                  <div className="dropdown dropdown-end">
+                    <div tabIndex={0} className="flex items-center gap-2 cursor-pointer hover:bg-[#5897D2] h-20 rounded-md p-2">
+                      {
+                        user?.photoURL ? (
+                          <>
+
+                            <div className="avatar">
+                              <div className="w-8 rounded-full">
+                                <img src={user.photoURL} alt='' />
+                              </div>
+                            </div>
+                          </>
+                        ) :
+                          (
+                            <FaUserAlt className='w-8 h-8 border rounded-full' />
+                          )
+                      }
+                      <p className='mr-3 font-semibold'>{user?.displayName}</p>
+                    </div>
+                    <ul tabIndex={0} className="menu dropdown-content bg-base-100 rounded-box z-[1] p-2 shadow text-black">
+                      <li><Link to='/my'><FaTachometerAlt /> Dashboard</Link></li>
+                      {
+                        isAdmin &&
+                        <li><Link to='/admin-dashboard'><FaTachometerAlt />Admin Dashboard</Link></li>
+                      }
+                      <li><Link to='/profile'><FaUser /> Profile</Link></li>
+                      <li onClick={handleLogOut}><Link><FaSignOutAlt /> Sign Out</Link></li>
+                    </ul>
+                  </div>
+
                 </>) : (<>
                   <Link to='/login' className="bg-gradient-to-r from-sky-500 to-indigo-500 text-white text-lg font-semibold px-5 py-3 rounded-md">Log in</Link>
                 </>)
               }
             </div>
-            <Link to='/login' className="bg-gradient-to-r from-sky-500 to-indigo-500 text-white text-lg font-semibold px-5 py-3 rounded-md">Log in</Link>
           </ul>
 
         </div>
@@ -76,7 +96,7 @@ const Navbar = () => {
           user?.uid ? (<>
             <div className="dropdown dropdown-end">
               <div tabIndex={0} className="flex items-center gap-2 cursor-pointer hover:bg-[#5897D2] h-20 rounded-md p-2">
-              {
+                {
                   user?.photoURL ? (
                     <>
 
@@ -88,44 +108,47 @@ const Navbar = () => {
                     </>
                   ) :
                     (
-                      <FaUserAlt className='w-8 h-8 border rounded-full'/>
+                      <FaUserAlt className='w-8 h-8 border rounded-full' />
                     )
                 }
-              <p className='mr-3 font-semibold'>{user?.displayName}</p>
+                <p className='mr-3 font-semibold'>{user?.displayName}</p>
               </div>
               <ul tabIndex={0} className="menu dropdown-content bg-base-100 rounded-box z-[1] p-2 shadow text-black">
                 <li><Link to='/my'><FaTachometerAlt /> Dashboard</Link></li>
                 {
-                  isAdmin && 
+                  isAdmin &&
                   <li><Link to='/admin-dashboard'><FaTachometerAlt />Admin Dashboard</Link></li>
                 }
                 <li><Link to='/profile'><FaUser /> Profile</Link></li>
                 <li onClick={handleLogOut}><Link><FaSignOutAlt /> Sign Out</Link></li>
               </ul>
             </div>
-            
+
           </>) : (<>
             <Link to='/login' className="bg-gradient-to-r from-sky-500 to-indigo-500 text-white text-lg font-semibold px-5 py-3 rounded-md">Log in</Link>
           </>)
         }
         {/* <Link to='/login' className="bg-gradient-to-r from-sky-500 to-indigo-500 text-white text-lg font-semibold px-5 py-3 rounded-md">Log in</Link> */}
       </div>
-      <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M4 6h16M4 12h8m-8 6h16"
-          />
-        </svg>
-      </label>
+      {
+        isAdmin &&
+        <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h8m-8 6h16"
+            />
+          </svg>
+        </label>
+      }
 
     </div>
   );

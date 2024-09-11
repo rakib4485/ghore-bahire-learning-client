@@ -32,13 +32,13 @@ const HomeAbout = () => {
     ]
     return (
         <div className='mx-[10%] mt-20'>
-            <div className='grid grid-cols-2 gap-10'>
-                <div className='w-[60%] mx-auto'>
+            <div className='grid md:grid-cols-2 gap-10'>
+                <div className='md:w-[60%] mx-auto'>
                     <h3 className="text-3xl font-bold text-center">What is COU E-Academic platform?</h3>
                     <p className='text-center mt-5'>Blended Learning Center is the digital teaching and learning hub of Cumilla University. The platform aims to connect teachers and students effectively allowing teachers to track progress of individual students and better facilitate their learning. </p>
                 </div>
                 <div>
-                    <div className='grid grid-cols-2 gap-6'>
+                    <div className='grid md:grid-cols-2 gap-6'>
                         {
                             aboutContent.map(about => (
                                 <div className='border shadow-[0_2px_5px_#1e4691] py-3 px-5 mt-5'>
