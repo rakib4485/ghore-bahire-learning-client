@@ -34,7 +34,7 @@ const HomeAbout = () => {
         <div className='mx-[10%] mt-20'>
             <div className='grid md:grid-cols-2 gap-10'>
                 <div className='md:w-[60%] mx-auto'>
-                    <h3 className="text-3xl font-bold text-center">What is COU E-Academic platform?</h3>
+                    <h3 className="text-3xl font-bold text-center">What is COU E-Academic Platform?</h3>
                     <p className='text-center mt-5'>Blended Learning Center is the digital teaching and learning hub of Cumilla University. The platform aims to connect teachers and students effectively allowing teachers to track progress of individual students and better facilitate their learning. </p>
                 </div>
                 <div>
