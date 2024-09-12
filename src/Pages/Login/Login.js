@@ -56,7 +56,7 @@ const Login = () => {
     <div className='grid md:grid-cols-2 gap-5'>
       <div className='auth-right'>
         <div className='text-white my-16 ml-16 mt-48'>
-          <h1 className='text-3xl font-bold'>CCOU E-Academic platform</h1>
+          <h1 className='text-3xl font-bold'>COU E-Academic platform</h1>
           <p className='mt-1 mb-3'>Learn, grow, and succeed with our interactive learning system</p>
           <Link to='/' className='learn-btn px-3 py-2 rounded-full'>Learn More</Link>
         </div>
