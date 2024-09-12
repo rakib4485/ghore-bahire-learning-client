@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import EnrolledStudentModal from '../../../Components/EnrolledStudentModal/EnrolledStudentModal';
 
 const TeacherHeader = ({course}) => {
     const {data: instactor = [] } = useQuery({
@@ -41,7 +42,9 @@ const TeacherHeader = ({course}) => {
                 <h2 className="text-xl font-semibold">{course.courseName}</h2>
             </div>
             <div className='my-5'>
-                <h1 className='text-blue-700 text-xl font-semibold'>Enrolled Students: {course.courseStudents?.length}</h1>
+            <label htmlFor='enroll-modal'>
+                <h1 className='text-blue-700 text-xl font-semibold cursor-pointer'>Enrolled Students: {course.courseStudents?.length}</h1>
+                </label>
             </div>
             </div>
             <div className='font-serif	text-[#BA4A00] text-justify bg-white rounded-lg my-10'>
@@ -54,7 +57,7 @@ const TeacherHeader = ({course}) => {
             </div>
             <div>
                 <h4 className="text-xl font-bold my-5 text-[#D35400]">Course Instructor</h4>
-                <div className='flex gap-6 items-center'>
+                <div className='md:flex gap-6 items-center'>
                     <img src={instactor.image} alt="" className='h-[200px] w-[200px]' />
                     <div className='text-[#727577] flex flex-col gap-5'>
                         <h5 className="text-lg"><strong>Name: </strong> {instactor?.userInfo?.name}</h5>
@@ -74,15 +77,16 @@ const TeacherHeader = ({course}) => {
             </div>
             <div className='font-serif text-justify bg-white rounded-lg my-10'>
                 <h4 className="text-xl font-bold uppercase text-black bg-[#E4E9EF] py-5 rounded-t-lg pl-5">Quick Access link</h4>
-                <div className="text-lg text-justify p-5 flex gap-4">
+                <div className="text-lg text-justify p-5 flex gap-4 flex-wrap">
                     {
                         course.weeks.map((week, idx) => <div key={idx} className='bg-slate-300 px-3 py-2 rounded'>
-                        <Link>Week - {idx+1}</Link>
+                        <a href={`#week${idx+1}`}>Week - {idx+1}</a>
                     </div>)
                     }
                     
                 </div>
             </div>
+            <EnrolledStudentModal student={course.courseStudents}/>
         </div>
     );
 };

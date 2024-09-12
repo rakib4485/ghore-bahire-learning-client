@@ -10,7 +10,7 @@ const SingleWeek = ({ id, week, index, }) => {
 
     const [isTeacher] = useTeacher(user?.email)
     return (
-        <div className='bg-white rounded-md p-4 mt-10'>
+        <div className='bg-white rounded-md p-4 mt-10' id={`week${index+1}`}>
             <div className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-200 flex items-center gap-10 mb-10'>
                 <div className='bg-[#AAADB0] p-4 md:p-7 w-[100px] md:w-[200px] rounded-r-3xl'>
                     <h2 className="text-xs md:text-3xl font-bold uppercase text-white ">Week - {index + 1}</h2>

@@ -126,6 +126,7 @@ const Profile = () => {
                                     console.log(data)
                                     toast.success("Your Profile is update successfully");
                                     closeModal('image-modal');
+                                    window.location.reload();
                                     //   navigate(from, { replace: true })
                                 })
                             
@@ -267,7 +268,7 @@ const Profile = () => {
                     </form>
                     <form onSubmit={cloudUpload}>
                         <input type="file" name='image' className="file-input file-input-bordered file-input-primary w-full mt-10" />
-                        <p className='text-right'><button type='submit' className="btn btn-outline btn-primary mt-5">Primary</button></p>
+                        <p className='text-right'><button type='submit' className="btn btn-outline btn-primary mt-5">Upload Image</button></p>
                     </form>
                 </div>
             </dialog>

@@ -18,14 +18,14 @@ const Navbar = () => {
   }
 
   const menuItems = <React.Fragment>
-    <li><Link to="/">Home</Link></li>
-    <li><Link to="/about">About</Link></li>
+    <li><Link to="/" className='hover:text-orange-600'>Home</Link></li>
+    <li><Link to="/about" className='hover:text-orange-600'>About</Link></li>
     {
       user?.uid ? (<>
-        <li><Link to="/my">Dashboard</Link></li>
+        <li><Link to="/my" className='hover:text-orange-600'>Dashboard</Link></li>
         {
           isTeacher &&
-          <li><Link to="/my-teacher">My Courses</Link></li>
+          <li><Link to="/my-teacher" className='hover:text-orange-600'>My Courses</Link></li>
         }
       </>) : (<>
 
@@ -45,7 +45,7 @@ const Navbar = () => {
               {
                 user?.uid ? (<>
                   <div className="dropdown dropdown-end">
-                    <div tabIndex={0} className="flex items-center gap-2 cursor-pointer hover:bg-[#5897D2] h-20 rounded-md p-2">
+                    <div tabIndex={1} className="flex items-center gap-2 cursor-pointer hover:bg-[#5897D2] h-20 rounded-md p-2">
                       {
                         user?.photoURL ? (
                           <>
@@ -63,7 +63,7 @@ const Navbar = () => {
                       }
                       <p className='mr-3 font-semibold'>{user?.displayName}</p>
                     </div>
-                    <ul tabIndex={0} className="menu dropdown-content bg-base-100 rounded-box z-[1] p-2 shadow text-black">
+                    <ul tabIndex={1} className="menu dropdown-content bg-base-100 rounded-box z-[1] p-2 shadow text-black">
                       <li><Link to='/my'><FaTachometerAlt /> Dashboard</Link></li>
                       {
                         isAdmin &&
@@ -74,15 +74,15 @@ const Navbar = () => {
                     </ul>
                   </div>
 
-                </>) : (<>
+                </>) : (<div className='my-5'>
                   <Link to='/login' className="bg-gradient-to-r from-sky-500 to-indigo-500 text-white text-lg font-semibold px-5 py-3 rounded-md">Log in</Link>
-                </>)
+                </div>)
               }
             </div>
           </ul>
 
         </div>
-        <Link to='/' className="flex items-center"><img src={logo} alt="" className='h-20 w-40 rounded-full' /> <span className='-ml-10'>COU E-Academic platform</span></Link>
+        <Link to='/' className="flex items-center"><img src={logo} alt="" className='h-20 w-40 rounded-full' /> <span className='-ml-10'>COU E-Academic Platform</span></Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="flex gap-3 px-1 font-bold text-md uppercase">

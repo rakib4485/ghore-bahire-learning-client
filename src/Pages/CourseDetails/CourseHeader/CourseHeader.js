@@ -50,11 +50,11 @@ const CourseHeader = ({course}) => {
                 </h5>
             </div>
             <div className='font-serif text-justify bg-white rounded-lg my-10'>
-                <h4 className="text-xl font-bold uppercase text-black bg-[#E4E9EF] py-5 rounded-t-lg pl-5">Quick Access link</h4>
-                <div className="text-lg text-justify p-5 flex gap-4">
+                <h4 className="md:text-xl font-bold uppercase text-black bg-[#E4E9EF] py-5 rounded-t-lg pl-5">Quick Access link</h4>
+                <div className="text-lg text-justify p-5 flex gap-4 flex-wrap">
                     {
-                        course.weeks.map((week, idx) => <div key={idx} className='bg-slate-300 px-3 py-2 rounded'>
-                        <Link>Week - {idx+1}</Link>
+                        course.weeks.map((week, idx) => <div key={idx} className='bg-slate-300 px-2 md:px-3 py-2 rounded'>
+                        <a href={`#week${idx+1}`}>Week - {idx+1}</a>
                     </div>)
                     }
                     

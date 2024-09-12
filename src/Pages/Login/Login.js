@@ -53,7 +53,7 @@ const Login = () => {
   //     })
   // }
   return (
-    <div className='grid grid-cols-2 gap-5'>
+    <div className='grid md:grid-cols-2 gap-5'>
       <div className='auth-right'>
         <div className='text-white my-16 ml-16 mt-48'>
           <h1 className='text-3xl font-bold'>CCOU E-Academic platform</h1>
